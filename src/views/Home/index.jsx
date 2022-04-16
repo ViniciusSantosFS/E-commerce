@@ -1,8 +1,30 @@
+import React from 'react'
 
-export default function Home() {
+import { Container, BottomNavigation } from '@mui/material'
+
+import Loading from '../../components/Loading'
+import CardList from '../../components/CardList'
+import NavBar from '../../components/NavBar'
+
+export default function Home(props) {
+    if (props.loading) {
+        return <Loading/>
+    }
+
     return (
         <div>
-            <h1>Home Page</h1>
+            <NavBar />
+            <Container sx={{marginTop: 10, marginBottom: 10}}>
+              {
+                CardList(props.products, () =>{})
+              }
+            </Container>
+
+            <BottomNavigation
+                showLabels
+                sx={{backgroundColor: "#1976D2"}}
+            >
+            </BottomNavigation>
         </div>
     )
 }
