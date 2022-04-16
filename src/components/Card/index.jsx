@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card as MuiCard,  CardContent, CardMedia, Typography } from '@mui/material'
+import { Box, Card as MuiCard,  CardContent, CardMedia, Typography } from '@mui/material'
 
 export default function Card({name, price, image, children}) {
     const styles = {
@@ -22,15 +22,17 @@ export default function Card({name, price, image, children}) {
                 image={require(`../../assets/${image}`)}
                 alt="Imagem do produto"
             />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {name}
-                </Typography>
-                <Typography variant='body1'>
-                   R$ {price}
-                </Typography>
-            </CardContent>
-            {children}
+            <Box>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {name}
+                    </Typography>
+                    <Typography variant='body1'>
+                    R$ {price}
+                    </Typography>
+                </CardContent>
+                {children}
+            </Box>
         </MuiCard>
     )
 }
