@@ -1,24 +1,28 @@
 import React from 'react'
 import {  AppBar, Toolbar, IconButton, Typography } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 import { Link } from 'react-router-dom'
+import { Box } from '@mui/system';
+import { COLORS } from '../../global/colors'
 
-const WHITE = "#FFFFFF"
-
-export default function NavBar() {
+export default function NavBar({itensInCart}) {
     return (
         <AppBar position='static'>
                 <Toolbar sx={{justifyContent: 'space-between'}}>
-                    <Typography variant="h5">
-                        E-Commerce
-                    </Typography>
+                    <Link to="/" style={{ color: COLORS.white, textDecoration: 'none' }}>
+                        <Typography variant="h5">
+                            E-Commerce
+                        </Typography>
+                    </Link>
                     <div>
-                        <Link to="/carrinho" style={{ color: WHITE }}>
+                        <Link to="/carrinho" style={{ color: COLORS.white }}>
                             <IconButton
                                 size="large"
                                 color="inherit"
                             >
                                 <ShoppingCartIcon />
+                                <Box component="span">{itensInCart}</Box>
                             </IconButton>
                         </Link>
                     </div>
