@@ -6,6 +6,9 @@ import Loading from '../../components/Loading'
 import CardList from '../../components/CardList'
 import NavBar from '../../components/NavBar'
 
+
+const BLUE = "#1976D2"
+
 export default function Home(props) {
     if (props.loading) {
         return <Loading/>
@@ -16,13 +19,13 @@ export default function Home(props) {
             <NavBar />
             <Container sx={{marginTop: 10, marginBottom: 10}}>
               {
-                CardList(props.products, () =>{})
+                CardList(props.products, props.handleAddProduct)
               }
             </Container>
 
             <BottomNavigation
                 showLabels
-                sx={{backgroundColor: "#1976D2"}}
+                sx={{backgroundColor: BLUE}}
             >
             </BottomNavigation>
         </div>
