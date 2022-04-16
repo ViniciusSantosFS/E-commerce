@@ -12,7 +12,7 @@ export default function NavBar({itensInCart}) {
                 <Toolbar sx={{justifyContent: 'space-between'}}>
                     <Link to="/" style={{ color: COLORS.white, textDecoration: 'none' }}>
                         <Typography variant="h5">
-                            E-Commerce
+                            E-commerce
                         </Typography>
                     </Link>
                     <div>
