@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Routes as Switch, Route} from 'react-router-dom'
 
-import Home from './views/Home'
+import Home from './views/Home/Container'
 
 export default function Routes() {
     return (
