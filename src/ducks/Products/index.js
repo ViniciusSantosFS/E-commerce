@@ -1,21 +1,23 @@
-import { createReducer } from "@reduxjs/toolkit"
+import { createAction, createReducer } from "@reduxjs/toolkit"
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from '../../services/axios'
 
 const initialState = {
     products: [],
-    productsPicked: [],
+    productsInCart: [],
     loading: false,
     error: ''
 }
 
-const fetchProductsList = createAsyncThunk(
-    '',
+const fetchProductsList = createAsyncThunk('',
     async () => {
         const products = await axios.get()
         return products.data
     }
 )
+
+const addProductsToCart = createAction('product/addToCart')
+
 
 const productsReducer = createReducer(initialState, (builder) => {
     builder.addCase(fetchProductsList.pending, (state) => {
@@ -29,11 +31,15 @@ const productsReducer = createReducer(initialState, (builder) => {
         state.error = 'Algo deu errado ao listar os produtos, tente novamente mais tarde'
         state.loading = false
     })
+    .addCase(addProductsToCart, (state, action) => {
+        state.productsInCart = [...state.productsInCart, action.payload]
+    })
 })
 
 
 export default productsReducer
 
 export const actions = {
-    fetchProductsList
+    fetchProductsList,
+    addProductsToCart
 }
