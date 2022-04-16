@@ -2,7 +2,7 @@ import CardList from "../../components/CardList";
 import { Box, Button, Container, Alert, Typography } from "@mui/material";
 import { useState } from "react";
 
-const TREE_SECONDS_IN_MS = 3000
+const TWO_SECONDS_IN_MS = 2000
 
 const styles = {
     totalAmountContainer: {
@@ -25,7 +25,7 @@ export default function Cart(props) {
     
     const handleConffirmBuy = () => {
         setShowAlert(true)
-        setTimeout(() => {setShowAlert(false) }, TREE_SECONDS_IN_MS)
+        setTimeout(() => {setShowAlert(false) }, TWO_SECONDS_IN_MS)
         props.handleClearCart()
     }
 
