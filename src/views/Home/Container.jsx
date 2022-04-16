@@ -42,7 +42,6 @@ export default function Container() {
     return <Home 
               loading={loading}
               products={avaliableProducts}
-              productsInCart={productsInCart}
               error={error}
               handleAddProduct={handleAddProduct}
             />
