@@ -1,33 +1,34 @@
 import React from 'react'
 
-import { Container, BottomNavigation } from '@mui/material'
+import { Container, Box, Alert } from '@mui/material'
 
 import Loading from '../../components/Loading'
 import CardList from '../../components/CardList'
-import NavBar from '../../components/NavBar'
 
-
-const BLUE = "#1976D2"
 
 export default function Home(props) {
+
     if (props.loading) {
-        return <Loading/>
+        return (
+            <Box sx={{ marginTop: 30 }}>
+              <Loading />
+            </Box>
+        )
     }
 
     return (
         <div>
-            <NavBar />
             <Container sx={{marginTop: 10, marginBottom: 10}}>
               {
-                CardList(props.products, props.handleAddProduct)
+                props.error !== '' ? (
+                    <Alert variant="filled" severity="error"> {props.error} </Alert>
+                ) : CardList({
+                    list: props.products,
+                    text: 'ADICIONAR',
+                    handleInteractWithItem: props.handleAddProduct
+                })
               }
             </Container>
-
-            <BottomNavigation
-                showLabels
-                sx={{backgroundColor: BLUE}}
-            >
-            </BottomNavigation>
         </div>
     )
 }

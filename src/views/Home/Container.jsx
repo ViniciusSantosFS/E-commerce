@@ -14,10 +14,9 @@ export default function Container() {
     const loading = useSelector(state => state.productsReducer.loading)
     const error = useSelector(state => state.productsReducer.error)
     const getProductList = actions.fetchProductsList
-    
-    // Verificação para não listar produtos já selecionados
+
     const getAvaliableProducts = (products, productsInCart) => {
-        const productsIdInCart = productsInCart.map(({id}) => id)
+        const productsIdInCart = productsInCart.map(({ id }) => id)
         return products.filter(({id}) => !productsIdInCart.includes(id))
     }
 
@@ -25,7 +24,7 @@ export default function Container() {
 
     useEffect(() => {
         dispatch(getProductList())
-        .then(({payload}) => {
+        .then(({ payload }) => {
             if (payload === undefined) return
             return getAvaliableProducts(payload, productsInCart)
         })
@@ -43,6 +42,7 @@ export default function Container() {
     return <Home 
               loading={loading}
               products={avaliableProducts}
+              productsInCart={productsInCart}
               error={error}
               handleAddProduct={handleAddProduct}
             />
